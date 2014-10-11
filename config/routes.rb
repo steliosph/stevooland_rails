@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
-  root 'static_pages#home'
+  get 'user_resources/new'
+
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
+  root 'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'get'
+  match '/index',   to: 'static_pages#index',   via: 'get'
+
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

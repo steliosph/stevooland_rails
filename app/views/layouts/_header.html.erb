@@ -1,7 +1,7 @@
 <div class="header">
   <ul class="nav nav-pills pull-right">
     <li class="active"><%= link_to "Home", root_path %></li>
-    <li><%= link_to "About", '#' %></li>
+    <li><% if signed_in? %><%= link_to "Sign out", signout_path %><% else %><%= link_to "Sign in", signin_path %></li><% end %>
     <li><%= link_to "Contact", '#' %></li>
   </ul>
   <h3 class="text-muted">Stevoo Land</h3>
